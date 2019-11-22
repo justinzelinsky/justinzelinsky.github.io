@@ -5,15 +5,17 @@
   
 
   
-  <title>Justin Zelinsky</title>
+  <title>An organized approach to Webpack configuration | Justin Zelinsky</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Justin Zelinsky">
-<meta property="og:url" content="http:&#x2F;&#x2F;justinzelinsky.com&#x2F;index.html">
+  <meta name="description" content="Webpack is an excellent tool in the web developers utility belt. It has become one of the expected technologies that any competent Web UI engineer is expected to be familar with, especially if they’re">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An organized approach to Webpack configuration">
+<meta property="og:url" content="http:&#x2F;&#x2F;justinzelinsky.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;an-organized-approach-to-webpack&#x2F;index.html">
 <meta property="og:site_name" content="Justin Zelinsky">
-<meta property="og:description" content="My personal blog">
+<meta property="og:description" content="Webpack is an excellent tool in the web developers utility belt. It has become one of the expected technologies that any competent Web UI engineer is expected to be familar with, especially if they’re">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-22T23:54:10.842Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Justin Zelinsky" type="application/atom+xml">
@@ -65,9 +67,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-an-organized-approach-to-webpack" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-an-organized-approach-to-webpack" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/22/an-organized-approach-to-webpack/" class="article-date">
   <time datetime="2019-11-22T23:05:20.000Z" itemprop="datePublished">2019-11-22</time>
@@ -80,8 +80,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/22/an-organized-approach-to-webpack/">An organized approach to Webpack configuration</a>
+    <h1 class="article-title" itemprop="name">
+      An organized approach to Webpack configuration
     </h1>
   
 
@@ -169,105 +169,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-redux-best-practices" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/22/redux-best-practices/" class="article-date">
-  <time datetime="2019-11-22T15:24:56.000Z" itemprop="datePublished">2019-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/22/redux-best-practices/">Redux Best Practices</a>
-    </h1>
+    <a href="/2019/11/22/redux-best-practices/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redux Best Practices</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Redux is a predictable state management library that can be used with many different UI frameworks. When using with React, you use it along side of the tool <code>react-redux</code> in order to connect your components to the store and to be able to dispatch actions and retrieve state. After working on multiple projects in my career using Redux + the time I’ve spent personally using Redux, here are some tips on how to structure your redux store and code:</p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
-<li><p>Make your store as flat as possible. When you have deeply nested objects, you’ll find that your reducers will contain a lot of copying and checking and it’ll be an absolute pain to maintain this code as your store grows.</p>
-</li>
-<li><p>Leverage selectors as much as possible. Selectors allow you to compute state based on the application state. For example, imagine you have a list of accounts with a bunch of data associated with them. You can use a selector to build a new data structure for a component that may need that user list but in a different format. Selectors are memoized which means that all of your components which use a selector will only compute the value once and then it won’t update unless the store updates. The two main options are the <code>useSelector</code> hook that ships with <code>react-redux</code> and the library <code>reselect</code>.</p>
-</li>
-<li><p>Use actions creators — action creators are simply functions which return action objects. I’d recommend keeping with the standard of having just two properties at the top level of the action <code>type</code> and <code>payload</code> and then put inside the <code>payload</code> object whatever you want. Technically a Redux action is an object with at least one property <code>type</code> and you can put whatever else you want in it but I think it’s better to follow the standard flux action pattern. (Note: There’s also a property you can add called <code>error</code> which will mark an action as an error action. Set this property to <code>true</code> if necessary)</p>
-</li>
-<li><p>Test your selectors and reducers — your selectors and reducers are where the vast bulk of your logic will exist and these should absolutely be tested.</p>
-</li>
-<li><p>I personally recommend keeping all of your reducers and actions in one file, alphabetized. I find trying to navigate the redux store and seeing what is available is difficult when you have so many different files being imported and magically combined in the end.</p>
-</li>
-<li><p>Your components should be as unaware of Redux as possible — from their perspective, they receive props and render them. They also receive actions via <code>mapDispatchToProps</code> and can execute them when needed. I’d avoid using <code>dispatch</code> as much as possible and instead create a shared function <code>mapDispatchToProps</code> which takes an <code>action</code> object (which contains all of your action creators) and then wraps it with <code>dispatch</code> — you can use the function <code>bindActionCreators</code> from <code>redux</code> to do this.</p>
-</li>
-<li><p>Leverage redux middleware like <code>redux-logic</code> or <code>rxjs</code> or similar to handle business logic or side effects from actions being dispatched. For example, I’ve used <code>redux-logic</code> before and are able to you can define a certain type of action that, when dispatched, will invoke a function. You can even configure this logic to execute before or after the action has reached the reducers. I put most of my asynchronous work here + redirect logic because my components should literally just be in charge of rendering the view and at the most, dispatching actions.</p>
-</li>
-</ol>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Redux seems complicated but the reality is that the complexity comes from misunderstanding how it works and attempting to overengineer it from the beginning. It’s a store (an object), an action (an object), and a reducer (a pure function). People make stores and reducers absurdly complicated which make it difficult to follow what’s going on during the lifecycle of the application and splitting everything up across many different files makes it hard to understand what the store actually contains. Put business logic inside of middleware. Reducers just update state. Components render the view. If you follow the rules of the game, you’ll have a much easier time using redux and won’t find yourself completely lost on how anything is being done. Final note: install redux-devtools — it allows you to see all actions dispatched and how the state changes over time — it rules.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2019/11/22/redux-best-practices/" data-id="ck3asx0x20002hrvx4o5i2u2c" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selectors/" rel="tag">selectors</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/22/hello-world/" class="article-date">
-  <time datetime="2019-11-22T02:23:10.976Z" itemprop="datePublished">2019-11-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/22/hello-world/">Hello World!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to my blog! I plan on writing about a myriad of subjects, including JavaScript, Tottenham, economics, and anything else I find interesting! I hope you have fun reading!</p>
-<p>More content coming soon!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2019/11/22/hello-world/" data-id="ck3asx0x70004hrvx1glchkg6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
