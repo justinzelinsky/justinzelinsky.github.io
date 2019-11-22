@@ -1,7 +1,12 @@
 ---
 title: Redux Best Practices
 date: 2019-11-22 10:24:56
-tags: redux, javascript, react, selectors, best practices
+tags:
+- redux
+- javascript
+- react
+- selectors
+- best practices
 ---
 
 Redux is a predictable state management library that can be used with many different UI frameworks. When using with React, you use it along side of the tool `react-redux` in order to connect your components to the store and to be able to dispatch actions and retrieve state. After working on multiple projects in my career using Redux + the time I’ve spent personally using Redux, here are some tips on how to structure your redux store and code:
