@@ -3,6 +3,7 @@ menu:
   Home: /
   Archives: /archives
   About: /about.html
+  Github: https://github.com/justinzelinsky
 rss: /atom.xml
 
 # Content
