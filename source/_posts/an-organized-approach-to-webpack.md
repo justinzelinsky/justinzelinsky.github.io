@@ -2,7 +2,7 @@
 title: An organized approach to Webpack configuration
 date: 2019-11-22 18:05:20
 tags:
-- webpack
+  - webpack
 ---
 
 [Webpack](https://webpack.js.org) is an excellent tool in the web developers utility belt. It has become one of the expected technologies that any competent Web UI engineer is expected to be familar with, especially if they're using technologies like React. However, one of the biggest hurdles to using Webpack has been properly configuring it.
@@ -32,9 +32,9 @@ const { DefinePlugin } = require('webpack');
 
 At the top of your file, you'll likely be importing the various plugins or other libraries you'll be using when building your configuration. I recommend sorting your imports by their path, alphabetically. This is a general practice I recommend for two reasons:
 
-1) You're able to quickly scan the code for what you're looking for if you have an understanding of the relative location of the line of code based on the path name.
+1. You're able to quickly scan the code for what you're looking for if you have an understanding of the relative location of the line of code based on the path name.
 
-2) You are less likely to run into merge conflicts with other team members if everyone is sorting things alphabetically -- lines of code tend to slip into their correct position by default when merging branches.
+2. You are less likely to run into merge conflicts with other team members if everyone is sorting things alphabetically -- lines of code tend to slip into their correct position by default when merging branches.
 
 ### Program variables
 
@@ -151,8 +151,11 @@ Here's where things get interesting -- this is our `rules` array. The `rules` ar
 }
 ```
 
-This rule is for files ending in either `.js` or `.jsx`. The `test` property is what determines which files this rule applies to. `include` and `exclude` refer to which directories that webpack should look for these files. Finally, let's look at `use`. `use` is an array of loaders which will process these files. In the above example, we're using two loaders: `babel-loader` and `eslint-loader`. It's important to note that the order of the rules matter and files actually start at the end of the array and move to the beginning. So in the above example, a file (e.g. `utils.js`) will first be sent through the `eslint-loader` (which will run eslint against it), and then send it to `babel-loader` (which will transform it via Babel). Please note the use of the `paths` variable in `include`.
+This rule is for files ending in either `.js` or `.jsx`. The `test` property is what determines which files this rule applies to. `include` and `exclude` refer to which directories that webpack should look for these files.
 
+`use` is an array of loaders which will process these files. In the above example, we're using two loaders: `babel-loader` and `eslint-loader`. It's important to note that the order of the rules matter and files actually start at the end of the array and move to the beginning. So in the above example, a file (e.g. `utils.js`) will first be sent through the `eslint-loader` (which will run eslint against it), and then send it to `babel-loader` (which will transform it via Babel). Another way to think about this is to imagine the loaders as functions that wrap one another. e.g. `babelLoader(esLintLoader(file));`
+
+Please note the use of the `paths` variable in `include`.
 
 #### optimization
 
@@ -273,5 +276,3 @@ That's it! That's our webpack configuration object. We have defined all of our v
 ### Purpose
 
 I hope you see the value I am proposing by breaking up the configuration into separate variables. These variables, being independent from one another, allow you to programtically alter or change them based on what environment you're in. You do not have to worry about overusing inline conditional statements or anything like that. The final object being exported appears really clean and also allows you to quickly glance and see what properties you're actually configuring -- this is much easier to deal with than an entire object being exported which could be over one hundred lines of code.
-
-
