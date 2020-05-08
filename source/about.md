@@ -7,7 +7,10 @@ date: 2019-11-21 20:58:45
 
 - Tottenham
 - History
+  - 19th Century American
 - Economics (Austrian)
+  - Ludwig von Mises
+  - Robert Murphy
 - Political Theory
 
 ## Technology I use
