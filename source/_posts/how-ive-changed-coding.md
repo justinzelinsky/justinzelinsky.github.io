@@ -100,9 +100,9 @@ const MyComponent = Component.extend({
 });
 ```
 
-I was stuck in the world of `this` once again. However, being back in the world of `this`, I started to reassess my use of arrow functions versus standard function declarations. There is certainly a time and place where `this` matters and using arrow functions is certainly prefeable to the classic `const self = this;`. That being said, I started to realize that my desire to always use arrow functions actually signaled some intent which may or may not be true.
+I was stuck in the world of `this` once again. However, being back in the world of `this`, I started to reassess my use of arrow functions versus standard function declarations. There is certainly a time and place where `this` matters and using arrow functions is certainly preferable to the classic `const self = this;`. That being said, I started to realize that my desire to always use arrow functions actually signaled some intent which may or may not be true.
 
-Arrow functions do not have "its own bindings to the this, arguments, super, or new.target keywords." When I use arrow functions, I am actually signaling that the various bindings matter. This may or may not be the case. The actual function keyword works perfectly fine I realized. Even when I'm not writing object-oriented code, it may be useful to use the actual function declaration and leverage arrow functions when I need the different behavior of arrow functions (e.g. infering the value of `this` or being able to have implicit returns for one-liners.)
+Arrow functions do not have "its own bindings to the this, arguments, super, or new.target keywords." When I use arrow functions, I am actually signaling that the various bindings may actually matter which may or may not be true. The actual function keyword works perfectly fine I realized. Even when I'm not writing object-oriented code, it may be useful to use the actual function declaration and leverage arrow functions when I need the different behavior of arrow functions (e.g. infering the value of `this` or being able to have implicit returns for one-liners.)
 
 ### tl;dr
 
