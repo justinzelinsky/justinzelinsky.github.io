@@ -70,7 +70,7 @@
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/14/hello-world/" class="article-date">
-  <time datetime="2020-05-14T02:01:45.592Z" itemprop="datePublished">2020-05-13</time>
+  <time datetime="2020-05-14T02:04:28.219Z" itemprop="datePublished">2020-05-13</time>
 </a>
     
   </div>
@@ -95,7 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2020/05/14/hello-world/" data-id="cka64nj2x0001zlws7s7v7nna" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2020/05/14/hello-world/" data-id="cka64r0l500010rtn98xp48m6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,15 +149,15 @@
 <p>However, as I’ve found myself in the Ember world, I started writing components differently. We were on an older version of Ember (something which seems to be commonplace at large institutuons). My components looked like this:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> MyComponent = Component.extend(&#123;</span><br><span class="line">  bar: service(),</span><br><span class="line"></span><br><span class="line">  foo() &#123;</span><br><span class="line">    <span class="keyword">const</span> bar = <span class="keyword">this</span>.get(<span class="string">'bar'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> baz = bar.doSomething();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> baz;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>I was stuck in the world of <code>this</code> once again. However, being back in the world of <code>this</code>, I started to reassess my use of arrow functions versus standard function declarations. There is certainly a time and place where <code>this</code> matters and using arrow functions is certainly prefeable to the classic <code>const self = this;</code>. That being said, I started to realize that my desire to always use arrow functions actually signaled some intent which may or may not be true.</p>
-<p>Arrow functions do not have “its own bindings to the this, arguments, super, or new.target keywords.” When I use arrow functions, I am actually signaling that the various bindings matter. This may or may not be the case. The actual function keyword works perfectly fine I realized. Even when I’m not writing object-oriented code, it may be useful to use the actual function declaration and leverage arrow functions when I need the different behavior of arrow functions (e.g. infering the value of <code>this</code> or being able to have implicit returns for one-liners.)</p>
+<p>I was stuck in the world of <code>this</code> once again. However, being back in the world of <code>this</code>, I started to reassess my use of arrow functions versus standard function declarations. There is certainly a time and place where <code>this</code> matters and using arrow functions is certainly preferable to the classic <code>const self = this;</code>. That being said, I started to realize that my desire to always use arrow functions actually signaled some intent which may or may not be true.</p>
+<p>Arrow functions do not have “its own bindings to the this, arguments, super, or new.target keywords.” When I use arrow functions, I am actually signaling that the various bindings may actually matter which may or may not be true. The actual function keyword works perfectly fine I realized. Even when I’m not writing object-oriented code, it may be useful to use the actual function declaration and leverage arrow functions when I need the different behavior of arrow functions (e.g. infering the value of <code>this</code> or being able to have implicit returns for one-liners.)</p>
 <h3 id="tl-dr"><a href="#tl-dr" class="headerlink" title="tl;dr"></a>tl;dr</h3><p>I now prefer to use <code>function</code> over <code>() =&gt; {}</code> unless I actually need the benefits of arrow functions.</p>
 <h2 id="Opinions-are-not-that-bad"><a href="#Opinions-are-not-that-bad" class="headerlink" title="Opinions are not that bad"></a>Opinions are not that bad</h2><p><strong><em>WIP</em></strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2020/05/14/how-ive-changed-coding/" data-id="cka64nj300002zlwsh3zf22tz" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2020/05/14/how-ive-changed-coding/" data-id="cka64r0lb00020rtnd5x9hymy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/habits/" rel="tag">habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/preferences/" rel="tag">preferences</a></li></ul>
@@ -197,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2020/02/01/react-hooks-versus-redux/" data-id="cka64nj320003zlws218n0kxo" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2020/02/01/react-hooks-versus-redux/" data-id="cka64r0le00030rtn6zir7doc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooks/" rel="tag">hooks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/" rel="tag">redux</a></li></ul>
@@ -309,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2019/11/22/an-organized-approach-to-webpack/" data-id="cka64nj3r000tzlwsd9eg5qf1" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2019/11/22/an-organized-approach-to-webpack/" data-id="cka64r0m1000t0rtn11yd2oya" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li></ul>
@@ -365,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2019/11/22/redux-best-practices/" data-id="cka64nj350005zlws7vxcaico" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2019/11/22/redux-best-practices/" data-id="cka64r0li00050rtnaodv06lp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selectors/" rel="tag">selectors</a></li></ul>
