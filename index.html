@@ -69,8 +69,8 @@
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/05/08/hello-world/" class="article-date">
-  <time datetime="2020-05-08T22:56:27.700Z" itemprop="datePublished">2020-05-08</time>
+    <a href="/2020/05/14/hello-world/" class="article-date">
+  <time datetime="2020-05-14T02:01:45.592Z" itemprop="datePublished">2020-05-13</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/hello-world/">Hello World!</a>
+      <a class="article-title" href="/2020/05/14/hello-world/">Hello World!</a>
     </h1>
   
 
@@ -95,9 +95,73 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2020/05/08/hello-world/" data-id="ck9ystz5p0001zbzb05ja89zc" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2020/05/14/hello-world/" data-id="cka64nj2x0001zlws7s7v7nna" class="article-share-link">Share</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-how-ive-changed-coding" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/14/how-ive-changed-coding/" class="article-date">
+  <time datetime="2020-05-14T01:34:26.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/14/how-ive-changed-coding/">How I&#39;ve changed my coding habits</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I’ve been a professional software engineer for almost seven years. When I reflect on how much I’ve changed and how much I’ve learned over the years, I’m astonished. Sometimes I will review code I’ve written not one year ago and be ashamed of how poor my code was – it was too verbose or too “hacky” or too “clever.” At my current job, I’ve found myself in a new environment – I currently work on an enterprise application written in Ember over the course of 5 years by multiple teams located across the entire world. I’ve gained a new appreciation for opinionated frameworks and I’ve learned how to become a useful engineer and help deliver code which may not be the sexiest but satisfies our customers.</p>
+<p>Over this time, my preferences for writing JavaScript have changed. I’ve realized certain traps I’ve fallen into and I’ve started to reassess some of the patterns that I felt were right to follow when coding.</p>
+<p>In this post, I hope to outline some of the coding changes I’ve made and I hope you see the value in why I made these changes. I intend to update it with new items as they come to mind.</p>
+<h2 id="gt-versus-function"><a href="#gt-versus-function" class="headerlink" title="() =&gt; {} versus function"></a><code>() =&gt; {}</code> versus <code>function</code></h2><p>When I learned about <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">arrow functions</a> in my career, I fell in love. I appreciated the brevity:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> relevantItems = myArr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.foo === <span class="string">'bar'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>versus</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> relevantItems = myArr.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.foo === <span class="string">'bar'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>It seemed so obvious to me that there were hardly any situations where arrow functions wouldn’t be preferably to use. I had recrntly been for all intents and purposes a React engineer – not a front-end engineer. I worked in React. I had React solutions to any problems. My current job forced me to reassess everything when I had to forgo the freedom of React and embrace the order of Ember.</p>
+<p>During my React times, I was writing components using the arrow function syntax. </p>
+<p>e.g.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyComponent = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; someProp, triggerEvent &#125; = props;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    triggerEvent(someProp);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"my-component"</span>&gt;</span><br><span class="line">      &lt;button onClick=&#123;handleClick&#125;&gt;Click me!<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>My components were arrow functions, my functions were arrow functions. Even before I left behind class components and embraced function components à la hooks, I had still used arrow functions on my class components.</p>
+<p>e.g.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyOtherComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    foo: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  changeFoo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">foo</span>: <span class="built_in">Math</span>.random() &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; foo &#125; = <span class="keyword">this</span>.state;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"my-other-component"</span>&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="keyword">this</span>.changeFoo&#125;&gt;Change something!<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">        Foo is: &#123;foo&#125;;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>In fact, to be completely honest, I didn’t realize I was actually using class properties for the longest time to allow for arrow functions on class definitions. I was all about arrow functions. Forget about <code>this.foo = this.foo.bind(this);</code>!</p>
+<p>However, as I’ve found myself in the Ember world, I started writing components differently. We were on an older version of Ember (something which seems to be commonplace at large institutuons). My components looked like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> MyComponent = Component.extend(&#123;</span><br><span class="line">  bar: service(),</span><br><span class="line"></span><br><span class="line">  foo() &#123;</span><br><span class="line">    <span class="keyword">const</span> bar = <span class="keyword">this</span>.get(<span class="string">'bar'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> baz = bar.doSomething();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> baz;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>I was stuck in the world of <code>this</code> once again. However, being back in the world of <code>this</code>, I started to reassess my use of arrow functions versus standard function declarations. There is certainly a time and place where <code>this</code> matters and using arrow functions is certainly prefeable to the classic <code>const self = this;</code>. That being said, I started to realize that my desire to always use arrow functions actually signaled some intent which may or may not be true.</p>
+<p>Arrow functions do not have “its own bindings to the this, arguments, super, or new.target keywords.” When I use arrow functions, I am actually signaling that the various bindings matter. This may or may not be the case. The actual function keyword works perfectly fine I realized. Even when I’m not writing object-oriented code, it may be useful to use the actual function declaration and leverage arrow functions when I need the different behavior of arrow functions (e.g. infering the value of <code>this</code> or being able to have implicit returns for one-liners.)</p>
+<h3 id="tl-dr"><a href="#tl-dr" class="headerlink" title="tl;dr"></a>tl;dr</h3><p>I now prefer to use <code>function</code> over <code>() =&gt; {}</code> unless I actually need the benefits of arrow functions.</p>
+<h2 id="Opinions-are-not-that-bad"><a href="#Opinions-are-not-that-bad" class="headerlink" title="Opinions are not that bad"></a>Opinions are not that bad</h2><p><strong><em>WIP</em></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://justinzelinsky.com/2020/05/14/how-ive-changed-coding/" data-id="cka64nj300002zlwsh3zf22tz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/habits/" rel="tag">habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/preferences/" rel="tag">preferences</a></li></ul>
+
     </footer>
   </div>
   
@@ -127,12 +191,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>It’s been almost one year since the release of <a href="https://reactjs.org/blog/2019/02/06/react-v16.8.0.html" target="_blank" rel="noopener">React v16.8 (The One With Hooks)</a>. Since then, we’ve seen many developers jump onto the hooks train and begin to rewrite their current applications to ditch class components and instead leverage hooks for state and side effect management. Hooks provide a more direct access to React’s API and allow developers to handle writing reusable logic in the same sense they could write reusable components. Prior to the introduction of hooks, it wasn’t immediately obvious the best way for components to share stateful logic. There</p>
+        <p>It’s been almost one year since the release of <a href="https://reactjs.org/blog/2019/02/06/react-v16.8.0.html" target="_blank" rel="noopener">React v16.8 (The One With Hooks)</a>. Since then, we’ve seen many developers jump onto the hooks train and begin to rewrite their current applications to ditch class components and instead leverage hooks for state and side effect management. Hooks provide a more direct access to React’s API and allow developers to handle writing reusable logic in the same sense they could write reusable components. Prior to the introduction of hooks, it wasn’t immediately obvious the best way for components to share stateful logic. </p>
+<p><strong><em>WIP</em></strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2020/02/01/react-hooks-versus-redux/" data-id="ck9ystz5v0002zbzb54cabvvo" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2020/02/01/react-hooks-versus-redux/" data-id="cka64nj320003zlws218n0kxo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooks/" rel="tag">hooks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/" rel="tag">redux</a></li></ul>
@@ -244,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2019/11/22/an-organized-approach-to-webpack/" data-id="ck9ystz6f000kzbzb4xfpclyk" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2019/11/22/an-organized-approach-to-webpack/" data-id="cka64nj3r000tzlwsd9eg5qf1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li></ul>
@@ -300,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://justinzelinsky.com/2019/11/22/redux-best-practices/" data-id="ck9ystz5y0003zbzberxkhujx" class="article-share-link">Share</a>
+      <a data-url="http://justinzelinsky.com/2019/11/22/redux-best-practices/" data-id="cka64nj350005zlws7vxcaico" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selectors/" rel="tag">selectors</a></li></ul>
@@ -325,7 +390,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selectors/" rel="tag">selectors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/best-practices/" rel="tag">best practices</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/habits/" rel="tag">habits</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preferences/" rel="tag">preferences</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selectors/" rel="tag">selectors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li></ul>
     </div>
   </div>
 
@@ -335,7 +400,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/best-practices/" style="font-size: 10px;">best practices</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 20px;">redux</a> <a href="/tags/selectors/" style="font-size: 10px;">selectors</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+      <a href="/tags/best-practices/" style="font-size: 20px;">best practices</a> <a href="/tags/habits/" style="font-size: 10px;">habits</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/preferences/" style="font-size: 10px;">preferences</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 20px;">redux</a> <a href="/tags/selectors/" style="font-size: 10px;">selectors</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
   </div>
 
@@ -357,7 +422,11 @@
       <ul>
         
           <li>
-            <a href="/2020/05/08/hello-world/">Hello World!</a>
+            <a href="/2020/05/14/hello-world/">Hello World!</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/14/how-ive-changed-coding/">How I&#39;ve changed my coding habits</a>
           </li>
         
           <li>
