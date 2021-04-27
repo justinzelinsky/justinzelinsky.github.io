@@ -5,6 +5,7 @@ date: 2019-11-21 20:58:45
 
 ## Things I like
 
+- My Wife
 - Tottenham
 - History
   - 19th Century American
@@ -17,16 +18,17 @@ date: 2019-11-21 20:58:45
 
 - JavaScript
   - React
-  - Node
   - Ember
+  - Node
 - HTML
 - CSS
   - SCSS
 - Python
-- Webpack
-- Babel
-- Eslint
-- Visual Studio Code
-- Atom
-- MacOS
-- Git
+- Tooling
+  - Webpack
+  - Babel
+  - Eslint
+  - Visual Studio Code
+  - Atom
+  - MacOS
+  - Git
